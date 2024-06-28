@@ -16,7 +16,7 @@ class UserSelect extends React.Component {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <WifiBar/>
+                
                 <StyledButton 
                     onClick = { this.handlePatientClick }
                     style = {{

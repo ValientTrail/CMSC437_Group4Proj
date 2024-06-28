@@ -36,13 +36,13 @@ class AppBackground extends React.Component {
         this.state = {
             page: props.page
         };
-        console.log(props);
     }
 
     render(){
         return(
         <div className="appFrame">
             <div className="appBackground">
+                <WifiBar/>
                 {
                     this.state.page
                 }
@@ -65,7 +65,7 @@ class StyledButton extends React.Component {
 
     render() {
         const style = {...this.state.style, "--hoverColor": this.state.hoverColor}
-        console.log(style);
+    
         return(
             <div className="styledButton">
                 <button id="button" style={style} onClick={ this.state.onClick }>
