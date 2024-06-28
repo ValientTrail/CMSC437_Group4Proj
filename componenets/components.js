@@ -68,10 +68,50 @@ class StyledButton extends React.Component {
         console.log(style);
         return(
             <div className="styledButton">
+                
                 <button id="button" style={style} onClick={ this.state.onClick }>
                     <h1>{this.state.name}</h1>
                 </button>
             </div>
         )
+    }
+}
+class VitalSigns extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            spO2: props.heartRate ?? "97%",
+            RR: props.oxygenLevel ?? 75,
+            BP: props.temperature ?? 123/80,
+            Temp: props.temp ?? "96.2F"
+        }
+    }
+
+    render() {
+        
+        return (
+    <div className="flex-container">
+        <div className="flex-item">
+            <div className="vitalSigns">
+                <p>SPO2: {this.state.spO2}</p>
+            </div>
+        </div>
+        <div className="flex-item">
+            <div className="vitalSigns">
+                <p>RR: {this.state.RR}</p>
+            </div>
+        </div>
+        <div className="flex-item">
+            <div className="vitalSigns">
+                <p>BP: {this.state.BP}</p>
+            </div>
+        </div>
+        <div className="flex-item">
+            <div className="vitalSigns">
+                <p>TEMP: {this.state.Temp}</p>
+            </div>
+        </div>
+    </div>
+);
     }
 }

@@ -23,6 +23,7 @@ class UserSelect extends React.Component {
                         width: "400px",
                     }}
                 />
+                <VitalSigns/>
             </div>
         )
     }
