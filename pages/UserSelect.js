@@ -16,14 +16,18 @@ class UserSelect extends React.Component {
                 alignItems: "center",
                 justifyContent: "center"
             }}>
-                <WifiBar/>
-                <StyledButton 
-                    onClick = { this.handlePatientClick }
-                    style = {{
-                        width: "400px",
-                    }}
-                />
-                <VitalSigns/>
+                <div>
+                    <WifiBar/>
+                    <StyledButton 
+                        onClick = { this.handlePatientClick }
+                        style = {{
+                            width: "400px",
+                        }}
+                    />
+                    <VitalSigns/>
+                    <PatientInfo/>
+                </div>
+                
             </div>
         )
     }

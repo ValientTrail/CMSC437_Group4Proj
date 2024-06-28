@@ -91,8 +91,16 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.flex-item{
+.flex-item-vitals{
     width: 45%;
+    height: 45%;
+    background-color: #4A4646;
+    border-radius: 2rem;
+    margin: 1%;
+    padding: 1%;
+}
+.flex-item-info{
+    width: 25%;
     height: 45%;
     background-color: #4A4646;
     border-radius: 2rem;

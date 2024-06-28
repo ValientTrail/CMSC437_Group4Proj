@@ -91,27 +91,77 @@ class VitalSigns extends React.Component {
         
         return (
     <div className="flex-container">
-        <div className="flex-item">
+        <div className="flex-item-vitals">
             <div className="vitalSigns">
                 <p>SPO2: {this.state.spO2}</p>
             </div>
         </div>
-        <div className="flex-item">
+        <div className="flex-item-vitals">
             <div className="vitalSigns">
                 <p>RR: {this.state.RR}</p>
             </div>
         </div>
-        <div className="flex-item">
+        <div className="flex-item-vitals">
             <div className="vitalSigns">
                 <p>BP: {this.state.BP}</p>
             </div>
         </div>
-        <div className="flex-item">
+        <div className="flex-item-vitals">
             <div className="vitalSigns">
                 <p>TEMP: {this.state.Temp}</p>
             </div>
         </div>
     </div>
 );
+    }
+}
+
+class PatientInfo extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            name: props.name ?? "Jane Doe",
+            bd: props.age ?? "11/21/2003",
+            street : props.street ?? "1234 Right LN",
+            city: props.city ?? "Baltimore",
+            state: props.state ?? "MD",
+            zip: props.zip ?? 21749
+        }
+    }
+    render(){
+        return(
+            <div className="flex-container">
+                <div className="flex-item-info">
+                    <div>
+                        <p>{this.state.name}</p>
+                    </div>
+                </div>
+                <div className="flex-item-info">
+                    <div>
+                        <p>{this.state.street}</p>
+                    </div>
+                </div>
+                <div className="flex-item-info">
+                    <div>
+                        <p>{this.state.state}</p>
+                    </div>
+                </div>
+                <div className="flex-item-info">
+                    <div>
+                        <p>{this.state.bd}</p>
+                    </div>
+                </div>
+                <div className="flex-item-info">
+                    <div>
+                        <p>{this.state.city}</p>
+                    </div>
+                </div>
+                <div className="flex-item-info">
+                    <div>
+                        <p>{this.state.zip}</p>
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
