@@ -39,7 +39,8 @@ class AppBackground extends React.Component {
         console.log(props);
     }
 
-    render(){return(
+    render(){
+        return(
         <div className="appFrame">
             <div className="appBackground">
                 {
@@ -48,4 +49,29 @@ class AppBackground extends React.Component {
             </div>
         </div>
     )}
+}
+
+class StyledButton extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            style: props.style ?? {},
+            onClick: props.onClick ?? null,
+            name: props.name ?? "Button",
+            hoverColor: props.hoverColor ?? "#ff7171"
+
+        }
+    }
+
+    render() {
+        const style = {...this.state.style, "--hoverColor": this.state.hoverColor}
+        console.log(style);
+        return(
+            <div className="styledButton">
+                <button id="button" style={style} onClick={ this.state.onClick }>
+                    <h1>{this.state.name}</h1>
+                </button>
+            </div>
+        )
+    }
 }

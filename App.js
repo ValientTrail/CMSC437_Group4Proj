@@ -6,7 +6,7 @@ function App() {
       width:"100%",
       height: "100%"
     }}>
-      <AppBackground page={<WifiBar style={{top:"10%", right: "10%"}}/>}/>
+      <AppBackground page={<UserSelect />}/>
           
       </div>
   );

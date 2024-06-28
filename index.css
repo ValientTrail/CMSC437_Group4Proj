@@ -55,3 +55,24 @@
     font-size: 30px;
     color: black;
 }
+
+.styledButton button{
+    width: 200px;
+    height: 100px;
+    border: 2px solid #ff7171;
+    background-color: #FF3232;
+    border-radius: 40px;
+    box-shadow: 0px 0px 30px #191a19;
+    transition: background-color 0.3s;
+}
+
+.styledButton button:hover{
+    background-color: var(--hoverColor);
+}
+
+
+.styledButton button h1{
+    color: #ffffff;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 250%;
+}
