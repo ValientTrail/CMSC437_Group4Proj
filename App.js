@@ -1,6 +1,3 @@
-import React from "react";
-import WifiBar from "./componenets/wifibar/wifiBar";
-import AppBackground from "./componenets/AppBackground/appBackground";
 
 function App() {
   return (
@@ -15,4 +12,6 @@ function App() {
   );
 }
 
-export default App;
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
