@@ -1,3 +1,10 @@
+.julius-sans-one-regular {
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
 .appBackground {
     position: relative;
     display: flex;
@@ -51,7 +58,7 @@
     background-color: #24FF00;
 }
 .wb-Background h1{
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Julius Sans One', sans-serif;
     font-size: 30px;
     color: black;
 }
@@ -73,6 +80,55 @@
 
 .styledButton button h1{
     color: #ffffff;
-    font-family:'Courier New', Courier, monospace;
-    font-size: 250%;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 300%;
+}
+
+.vitalSigns{
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #191a19;
+    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.flex-item-vitals{
+    width: 45%;
+    height: 45%;
+    background-color: #4A4646;
+    border-radius: 2rem;
+    margin: 1%;
+    padding: 1%;
+}
+.flex-item-info{
+    width: 25%;
+    height: 45%;
+    background-color: #4A4646;
+    border-radius: 2rem;
+    margin: 1%;
+    padding: 1%;
+}
+
+.HR_Background{
+    width: 60%;
+    height: 20%;
+    background-color: #272222;
+    border-radius: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+}
+.canvas-container{
+    width: 20%;
+    height: 100%;
+    margin: none;
+    display: inline-block;
+    padding: 0;
 }
