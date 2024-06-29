@@ -169,6 +169,9 @@ class PatientInfo extends React.Component {
 class HeartRateGraph extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            heartValues: [0,1,0,1,0,1,0,1,0,1]
+        }
     }
 
     
@@ -176,15 +179,26 @@ class HeartRateGraph extends React.Component {
     render(){
         return(
             <div className="HR_Background">
-                <Line style = {{
-                    height:"100%",
-                    width:"100%",
-                }}/>
-                <HeartBeat style = {{
-                    height:"100%",
-                    width:"100%",
-                }}/>
-                
+                <div className="scroller">
+                {
+                    this.state.heartValues.map((value, i) => {
+                        if(value){
+                            return(
+                                <HeartBeat key={i} style = {{
+                                    height:"100%",
+                                    width:"100%",
+                                }}/>
+                            )
+                        }
+                        return(
+                        <Line key={i} style = {{
+                            height:"100%",
+                            width:"100%",
+                        }}/>)
+                    })
+                }
+                </div>
+
             </div>
         )
     }

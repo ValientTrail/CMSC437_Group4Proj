@@ -115,20 +115,35 @@
     padding: 1%;
 }
 
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
 .HR_Background{
     width: 60%;
     height: 20%;
     background-color: #272222;
     border-radius: 2rem;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: nowrap;
+    
 
 }
+
+.scroller {
+    display: inline-block;
+    animation: 10s scroll infinite linear;
+}
+
 .canvas-container{
     width: 20%;
     height: 100%;
-    margin: none;
     display: inline-block;
+    margin: none;
     padding: 0;
 }

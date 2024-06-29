@@ -16,7 +16,7 @@ class PatientInfoScreen extends React.Component{
                 width: "100%",
                 height: "100%",
             }}>
-
+                
                 <HeartRateGraph />
             </div>
         )
