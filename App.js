@@ -1,14 +1,19 @@
 
 function App() {
+  const [userType, setUserType] = React.useState("First-Responder");
+  const changeUserType = (userType) => {
+    setUserType(userType);
+  }
+
   return (
     <div style={{
       position: "absolute",
       width:"100%",
       height: "100%"
     }}>
-      <AppBackground page={<PatientInfoScreen />}/>
-          
-      </div>
+      <AppBackground page={<UserSelect />} />
+      
+    </div>
   );
 }
 

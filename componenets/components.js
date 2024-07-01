@@ -5,28 +5,27 @@ class WifiBar extends React.Component {
     }
 
     render(){
-
         return (
-        <div className="wb-Background">
-            <div className="battery-background">
-                <div className="battery" style={{width:"70%"}}></div>
+            <div className="wb-Background">
+                <div className="battery-background">
+                    <div className="battery" style={{width:"70%"}}></div>
+                </div>
+                <img src={this.LTE} alt="LTE" style={{
+                    position: "absolute",
+                    left: "45%",
+                    top: "12%",
+                    width: "60px",
+                    height: "32px"
+                }}></img>
+                <h1 style={{    
+                    position: "absolute",
+                    right: "5%",
+                    bottom: "-25%"}}
+                    >10:09</h1>
+                
             </div>
-            <img src={this.LTE} alt="LTE" style={{
-                position: "absolute",
-                left: "45%",
-                top: "12%",
-                width: "60px",
-                height: "32px"
-            }}></img>
-            <h1 style={{    
-                position: "absolute",
-                right: "5%",
-                bottom: "-25%"}}
-                >10:09</h1>
-            
-        </div>
-    )
-}
+        )
+    }
 }
 
 
@@ -59,7 +58,6 @@ class StyledButton extends React.Component {
             onClick: props.onClick ?? null,
             name: props.name ?? "Button",
             hoverColor: props.hoverColor ?? "#ff7171"
-
         }
     }
 
@@ -68,7 +66,6 @@ class StyledButton extends React.Component {
     
         return(
             <div className="styledButton">
-                
                 <button id="button" style={style} onClick={ this.state.onClick }>
                     <h1>{this.state.name}</h1>
                 </button>
@@ -90,29 +87,29 @@ class VitalSigns extends React.Component {
     render() {
         
         return (
-    <div className="flex-container">
-        <div className="flex-item-vitals">
-            <div className="vitalSigns">
-                <p>SPO2: {this.state.spO2}</p>
+            <div className="flex-container">
+                <div className="flex-item-vitals">
+                    <div className="vitalSigns">
+                        <p>SPO2: {this.state.spO2}</p>
+                    </div>
+                </div>
+                <div className="flex-item-vitals">
+                    <div className="vitalSigns">
+                        <p>RR: {this.state.RR}</p>
+                    </div>
+                </div>
+                <div className="flex-item-vitals">
+                    <div className="vitalSigns">
+                        <p>BP: {this.state.BP}</p>
+                    </div>
+                </div>
+                <div className="flex-item-vitals">
+                    <div className="vitalSigns">
+                        <p>TEMP: {this.state.Temp}</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div className="flex-item-vitals">
-            <div className="vitalSigns">
-                <p>RR: {this.state.RR}</p>
-            </div>
-        </div>
-        <div className="flex-item-vitals">
-            <div className="vitalSigns">
-                <p>BP: {this.state.BP}</p>
-            </div>
-        </div>
-        <div className="flex-item-vitals">
-            <div className="vitalSigns">
-                <p>TEMP: {this.state.Temp}</p>
-            </div>
-        </div>
-    </div>
-);
+        );
     }
 }
 
@@ -171,8 +168,6 @@ class HeartRateGraph extends React.Component {
         super(props)
     }
 
-    
-
     render(){
         return(
             <div className="HR_Background">
@@ -187,6 +182,36 @@ class HeartRateGraph extends React.Component {
                 
             </div>
         )
+    }
+}
+
+class PowerButton extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            style: {backgroundColor: "red", padding: "1rem"}
+        }
+    }
+
+    powerState = () => {
+        const powerVal = this.props.power;
+        if(powerVal == 0){
+            this.props.handlePowerChange(1);
+            this.setState({style: {backgroundColor: "green", padding: "1rem"}});
+        }else{
+            this.props.handlePowerChange(0);
+            this.setState({style: {backgroundColor: "red", padding: "1rem"}});
+        }
+    }
+
+    render(){
+        return(
+            <div className="power-button-container">
+                <button onClick={this.powerState} style={this.state.style}>
+                    <img src="./images/power-button-96.png" style={{height: "50px", width: "50px"}}/>
+                </button>
+            </div>
+        );
     }
 }
 
