@@ -133,3 +133,22 @@
     display: inline-block;
     padding: 0;
 }
+
+.power-button-container {
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    z-index: 2; /* Ensures the power button is always on top */
+}
+
+.power-button-container button {
+    background-color: red;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.power-button-container img {
+    height: 50px;
+    width: 50px;
+}
