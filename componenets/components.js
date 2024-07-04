@@ -14,8 +14,8 @@ class WifiBar extends React.Component {
                     position: "absolute",
                     left: "45%",
                     top: "12%",
-                    width: "60px",
-                    height: "32px"
+                    width: "20%",
+                    height: "70%"
                 }}></img>
                 <h1 style={{    
                     position: "absolute",
@@ -33,8 +33,28 @@ class AppBackground extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            page: props.page
+            page: props.page,
+            goBack: props.goBack ?? null,
+            showBack: props.showBack ?? false
         };
+        this.handleBack = this.handleBack.bind(this)
+    }
+
+    handleBack(){
+        this.state.goBack()
+    }
+
+    componentDidUpdate(prevProps){
+        
+        if(prevProps.page === undefined || this.props.page?.type !== prevProps.page?.type 
+            || prevProps.showBack !== this.props.showBack || this.props.goBack != prevProps.goBack
+        ){
+            this.setState ({
+                page: this.props.page,
+                goBack: this.props.goBack ?? null,
+                showBack: this.props.showBack ?? false
+            })
+        }
     }
 
     render(){
@@ -44,6 +64,18 @@ class AppBackground extends React.Component {
                 <WifiBar/>
                 {
                     this.state.page
+                }
+                { this.state.showBack ?
+                <StyledButton 
+                    style = {{
+                        position: "absolute",
+                        top: "2%",
+                        left: "2%",
+                        height: "6%",
+                    }}
+                    name="< Back"
+                    onClick={ this.handleBack }
+                />:<></>
                 }
             </div>
         </div>
@@ -73,6 +105,9 @@ class StyledButton extends React.Component {
         )
     }
 }
+
+// Code for Patient Vitals Page ----------------------------------------------------------------------
+
 class VitalSigns extends React.Component {
     constructor(props){
         super(props)
@@ -88,25 +123,25 @@ class VitalSigns extends React.Component {
         
         return (
             <div className="flex-container">
-                <div className="flex-item-vitals">
+                
                     <div className="vitalSigns">
                         <p>SPO2: {this.state.spO2}</p>
                     </div>
-                </div>
-                <div className="flex-item-vitals">
+               
+                
                     <div className="vitalSigns">
                         <p>RR: {this.state.RR}</p>
                     </div>
-                </div>
-                <div className="flex-item-vitals">
+               
+                
                     <div className="vitalSigns">
                         <p>BP: {this.state.BP}</p>
                     </div>
-                </div>
-                <div className="flex-item-vitals">
+                
+                
                     <div className="vitalSigns">
                         <p>TEMP: {this.state.Temp}</p>
-                    </div>
+                    
                 </div>
             </div>
         );
@@ -117,69 +152,99 @@ class PatientInfo extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            name: props.name ?? "Jane Doe",
-            bd: props.age ?? "11/21/2003",
-            street : props.street ?? "1234 Right LN",
-            city: props.city ?? "Baltimore",
-            state: props.state ?? "MD",
-            zip: props.zip ?? 21749
+            form: props.form
         }
     }
+
+    handleChange = () => {
+        return;
+    }
+
     render(){
         return(
-            <div className="flex-container">
-                <div className="flex-item-info">
-                    <div>
-                        <p>{this.state.name}</p>
-                    </div>
-                </div>
-                <div className="flex-item-info">
-                    <div>
-                        <p>{this.state.street}</p>
-                    </div>
-                </div>
-                <div className="flex-item-info">
-                    <div>
-                        <p>{this.state.state}</p>
-                    </div>
-                </div>
-                <div className="flex-item-info">
-                    <div>
-                        <p>{this.state.bd}</p>
-                    </div>
-                </div>
-                <div className="flex-item-info">
-                    <div>
-                        <p>{this.state.city}</p>
-                    </div>
-                </div>
-                <div className="flex-item-info">
-                    <div>
-                        <p>{this.state.zip}</p>
-                    </div>
-                </div>
+            <>
+            <h1 style={{
+                position: "relative",
+                left: "45%",
+                top: "-10%",
+                fontFamily:"Julius Sans One, sans-serif, bold",
+                    fontSize: "20px",
+                    color:"white",
+            }}>Patient Info</h1>
+
+            <div style={{
+                width: "50%%",
+                height: "70%",
+                display: "flex",
+                flexWrap: "wrap",
+            }}>
+
+                {
+                    Object.keys(this.state.form).map((key, index) => {
+                        return(
+                            <div className="flex-item-info" key={key} style={{
+                                width: "25%",
+                                height: "45%",
+                                position: "relative",
+                                top: "-15%",
+                            }}>
+                                <label style={{
+                                    fontFamily: "Julius Sans One, sans-serif",
+                                    fontSize: "15px",
+                                    color: "white",
+                                }}>{key.toUpperCase()}</label>
+                                <input value={this.state.form[key]} style={{
+                                    width: "80%",
+                                    borderRadius: "1rem",
+                                    backgroundColor: "#272222",
+                                    color: "white",
+                                }}>
+                                </input>
+                            </div>
+
+                        )
+                    })
+                }
             </div>
+            </>
         )
     }
 }
 
+
+
 class HeartRateGraph extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            heartValues: [0,1,0,1,0,0,1,0,1,0],
+            style: props.style ?? {},
+        }
     }
 
     render(){
         return(
-            <div className="HR_Background">
-                <Line style = {{
-                    height:"100%",
-                    width:"100%",
-                }}/>
-                <HeartBeat style = {{
-                    height:"100%",
-                    width:"100%",
-                }}/>
-                
+            <div className="HR_Background" style={this.state.style}>
+                <div className="scroller">
+                {
+                    this.state.heartValues.map((value, i) => {
+                        if(value){
+                            return(
+                                <HeartBeat key={i} style = {{
+                                    height:"100%",
+                                    width:"100%",
+                                }}/>
+                            )
+                        }
+                        return(
+                        <Line key={i} style = {{
+                            height:"100%",
+                            width:"100%",
+                        }}/>)
+                    })
+                }
+                </div>
+
             </div>
         )
     }
@@ -272,3 +337,4 @@ function HeartBeat(props){
         </div>
     )
 }
+// ------------------------------------------------------------------------------
