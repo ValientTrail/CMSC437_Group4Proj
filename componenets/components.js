@@ -254,7 +254,8 @@ class PowerButton extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            style: {backgroundColor: "red", padding: "1rem"}
+            style: {backgroundColor: "red", padding: "1rem"},
+            isPowerOn: props.power ?? 0
         }
     }
 
@@ -264,17 +265,69 @@ class PowerButton extends React.Component {
             this.props.handlePowerChange(1);
             this.setState({style: {backgroundColor: "green", padding: "1rem"}});
         }else{
-            this.props.handlePowerChange(0);
-            this.setState({style: {backgroundColor: "red", padding: "1rem"}});
+            this.setState(prevState => ({...prevState, isPowerOn: 1}), () => {this.countdown()});
         }
+    }
+
+    countdown = () => {
+        setTimeout(() => {
+            this.setState(prevState => ({...prevState, isPowerOn: 0}));
+        }, 10000);
+    }
+
+    powerOff = () => {
+        this.setState({style: {backgroundColor: "red", padding: "1rem"}});
+        this.props.handlePowerChange(0);
+        this.setState(prevState => ({...prevState, isPowerOn: 0}));
     }
 
     render(){
         return(
-            <div className="power-button-container">
-                <button onClick={this.powerState} style={this.state.style}>
-                    <img src="./images/power-button-96.png" style={{height: "50px", width: "50px"}}/>
-                </button>
+            <div style={{
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <div className="power-button-container">
+                    <button onClick={this.powerState} style={this.state.style}>
+                        <img src="./images/power-button-96.png" style={{height: "50px", width: "50px"}}/>
+                    </button>
+                </div>
+                { this.state.isPowerOn == 1 ?               
+                    <div style={{
+                        backgroundColor: "#211e1e",
+                        height: "50%",
+                        width: "50%",
+                        borderRadius: "15%",
+                        border: "3px solid white",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        zIndex: "3"
+                    }}>
+                        <h1 style={{position: "relative", color:"white", 
+                        fontFamily: "Julius Sans One, sans-serif"}}>
+                            Power Off
+                        </h1>
+                        <p style={{color:"white"}}>Do you want to turn the device off?</p>
+                        <p style={{color:"white"}}>Auto Hide after 10 seconds</p>
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "100%",
+                            height: "20%"
+                        }}>
+                            <StyledButton name="Abort" style={{width:"80%", height:"100%"}} onClick={() => {this.setState(prevState => ({...prevState, isPowerOn: 0}))}}/>
+                            <StyledButton name="Confirm" style={{width:"90%", height:"100%", backgroundColor:"#14e414",
+                            border: "2px solid ##01fc44", "--hoverColor": "#01fc44"}} onClick={this.powerOff}/>
+                        </div>
+                    </div> : <></>
+                }
             </div>
         );
     }

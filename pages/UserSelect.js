@@ -11,7 +11,7 @@ class UserSelect extends React.Component {
         }
     }
     handlePatientClick(){
-        this.state.changePage(<PatientInfoScreen />)
+        this.state.changePage(<CreatePatient />)
     }
 
     handlePowerChange(power) {
@@ -35,8 +35,7 @@ class UserSelect extends React.Component {
                 justifyContent: "center",
                 flexDirection: "column"
             }}>
-                {/* Always render the power button */}
-                <PowerButton power={this.state.power} handlePowerChange={this.handlePowerChange} />
+
 
                 {/* Render other components only if power is on */}
                 {isPowerOn && (
@@ -57,10 +56,12 @@ class UserSelect extends React.Component {
                                 backgroundColor: "#0000FF",
                                 border: "2px solid #0066ff"
                             }}
-                            hovorColor="#0066ff"
+                            hoverColor="#0066ff"
                         />
                     </div>
-                )}
+                )}                
+                {/* Always render the power button */}
+                <PowerButton power={this.state.power} handlePowerChange={this.handlePowerChange} />
             </div>
         );
     }

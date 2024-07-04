@@ -1,6 +1,29 @@
 class CreatePatient extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fname: "",
+      lname: "",
+      birthDate: "",
+      sex: "",
+      medicalHist: "",
+      incidentRep: "",
+      street: "",
+      city: "",
+      state: "",
+
+    }
+  }
+
+  handleChange = (event) => {
+    const {name, value} = event.target;
+    this.setState({ [name]: value });
+  }
+
+  createNewPatient = (event) => {
+    event.preventDefault();
+    var name = document.getElementById("fname").value() + " " + document.getElementById("lname").value()
+
   }
 
   render() {
@@ -103,7 +126,7 @@ class CreatePatient extends React.Component {
                 </div>
                 {/* Submit Button */}
                 <nav id="submit-button">
-                  <button type="submit">CREATE</button>
+                  <button type="submit" onSubmit={this.createNewPatient}>CREATE</button>
                 </nav>
               </div>
             </form>
