@@ -1,6 +1,7 @@
 
 function App() {
   const [pageList, setPageList] = React.useState([<UserSelect changePage={ changePage } goBack={ goToPrevPage }/>])
+  const [userType, setUserType] = React.useState("First-Responder");
   
   const goToPrevPage = () => {
     if (pageList.length <= 1 ) return;
@@ -17,6 +18,11 @@ function App() {
   React.useEffect(() => {
 
   }, [pageList])
+
+  
+  const changeUserType = (userType) => {
+    setUserType(userType);
+  }
 
   return (
     <div style={{
