@@ -11,7 +11,7 @@ class UserSelect extends React.Component {
         }
     }
     handlePatientClick(){
-        this.state.changePage(<CreatePatient />)
+        this.state.changePage(<PatientSelect changePage={this.props.changePage}/>)
     }
 
     handlePowerChange(power) {

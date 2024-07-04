@@ -33,8 +33,11 @@ class CreatePatient extends React.Component {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: "100%",
-          height: "100%",
+          width: "75%",
+          height: "75%",
+          borderRadius: "40px",
+          border: "10px solid #272222",
+          boxShadow: "0px 0px 30px #191a19",
           backgroundColor: "#f0f0f0", // Light background color for the page
         }}
       >
