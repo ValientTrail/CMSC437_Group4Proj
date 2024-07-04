@@ -14,8 +14,8 @@ class WifiBar extends React.Component {
                     position: "absolute",
                     left: "45%",
                     top: "12%",
-                    width: "60px",
-                    height: "32px"
+                    width: "20%",
+                    height: "70%"
                 }}></img>
                 <h1 style={{    
                     position: "absolute",
@@ -33,8 +33,28 @@ class AppBackground extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            page: props.page
+            page: props.page,
+            goBack: props.goBack ?? null,
+            showBack: props.showBack ?? false
         };
+        this.handleBack = this.handleBack.bind(this)
+    }
+
+    handleBack(){
+        this.state.goBack()
+    }
+
+    componentDidUpdate(prevProps){
+        
+        if(prevProps.page === undefined || this.props.page?.type !== prevProps.page?.type 
+            || prevProps.showBack !== this.props.showBack || this.props.goBack != prevProps.goBack
+        ){
+            this.setState ({
+                page: this.props.page,
+                goBack: this.props.goBack ?? null,
+                showBack: this.props.showBack ?? false
+            })
+        }
     }
 
     render(){
@@ -44,6 +64,18 @@ class AppBackground extends React.Component {
                 <WifiBar/>
                 {
                     this.state.page
+                }
+                { this.state.showBack ?
+                <StyledButton 
+                    style = {{
+                        position: "absolute",
+                        top: "2%",
+                        left: "2%",
+                        height: "6%",
+                    }}
+                    name="< Back"
+                    onClick={ this.handleBack }
+                />:<></>
                 }
             </div>
         </div>
@@ -91,25 +123,25 @@ class VitalSigns extends React.Component {
         
         return (
             <div className="flex-container">
-                <div className="flex-item-vitals">
+                
                     <div className="vitalSigns">
                         <p>SPO2: {this.state.spO2}</p>
                     </div>
-                </div>
-                <div className="flex-item-vitals">
+               
+                
                     <div className="vitalSigns">
                         <p>RR: {this.state.RR}</p>
                     </div>
-                </div>
-                <div className="flex-item-vitals">
+               
+                
                     <div className="vitalSigns">
                         <p>BP: {this.state.BP}</p>
                     </div>
-                </div>
-                <div className="flex-item-vitals">
+                
+                
                     <div className="vitalSigns">
                         <p>TEMP: {this.state.Temp}</p>
-                    </div>
+                    
                 </div>
             </div>
         );

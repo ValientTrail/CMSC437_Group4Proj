@@ -6,13 +6,12 @@ class UserSelect extends React.Component {
         this.handleUserChange = this.handleUserChange.bind(this);
         this.state = {
             changePage: props.changePage,
-            goBack: props.goBack,
             power: 0,
             userType: "First-Responder"
         }
     }
     handlePatientClick(){
-        this.state.changePage(<PatientInfoScreen goBack={goBack}/>)
+        this.state.changePage(<PatientInfoScreen />)
     }
 
     handlePowerChange(power) {
@@ -44,7 +43,7 @@ class UserSelect extends React.Component {
                     <div style={{position: "relative", zIndex: 1}}>
                         <h1 style={{color: "#FF5000"}}>Select User Type</h1>
                         <StyledButton 
-                            onClick={this.handleUserChange}
+                            onClick={this.handlePatientClick}
                             name="First Responder"
                             style={{
                                 width: "400px"
@@ -56,8 +55,9 @@ class UserSelect extends React.Component {
                             style={{
                                 width: "400px",
                                 backgroundColor: "#0000FF",
-                                border: "2px solid rgb(0, 200, 255)"
+                                border: "2px solid #0066ff"
                             }}
+                            hovorColor="#0066ff"
                         />
                     </div>
                 )}

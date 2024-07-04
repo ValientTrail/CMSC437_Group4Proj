@@ -65,13 +65,15 @@
 }
 
 .styledButton button{
-    width: 200px;
-    height: 100px;
     border: 2px solid #ff7171;
     background-color: #FF3232;
     border-radius: 40px;
     box-shadow: 0px 0px 30px #191a19;
     transition: background-color 0.3s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 1rem;
 }
 
@@ -83,7 +85,7 @@
 .styledButton button h1{
     color: #ffffff;
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 300%;
+    font-size: 3em;
 }
 
 .vitalSigns{

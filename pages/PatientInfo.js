@@ -23,16 +23,7 @@ class PatientInfoScreen extends React.Component{
     render(){
         return(
             <>
-                <StyledButton 
-                    style = {{
-                        position: "absolute",
-                        top: "2%",
-                        left: "2%",
-                        height: "11%",
-                    }}
-                    name="< Back"
-                    onClick={ this.handleBack }
-                />
+                
                 <div style={{
                     display:"flex",
                     alignItems: "center",
@@ -48,7 +39,7 @@ class PatientInfoScreen extends React.Component{
                             fontFamily:"Julius Sans One, sans-serif, bold",
                                 fontSize: "50px",
                                 color:"white",
-                        }}>{this.state.form.name}</h1> 
+                        }}>{ this.state.form.name }</h1> 
                 <div style={{
                     height:"40%",
                     width: "95%",
