@@ -2,9 +2,13 @@ class UserSelect extends React.Component {
     constructor(props){
         super(props)
         this.handlePatientClick = this.handlePatientClick.bind(this);
+        this.state = {
+            changePage: props.changePage,
+            goBack: props.goBack
+        }
     }
     handlePatientClick(){
-        console.log("clicked!")
+        this.state.changePage(<PatientInfoScreen goBack={goBack}/>)
     }
 
     render(){
@@ -22,6 +26,7 @@ class UserSelect extends React.Component {
                         style = {{
                             width: "400px",
                         }}
+                        name={"Patient Data"}
                     />
                 </div>
                 

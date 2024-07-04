@@ -34,8 +34,8 @@
     background-color: #6FDE8E;
     box-shadow: 0px 0px 30px #191a19;
     display: flex;
-    width: 330px;
-    height: 50px;
+    width: 155px;
+    height: 25px;
     top:2.5%;
     right:2.5%;
 
@@ -59,8 +59,9 @@
 }
 .wb-Background h1{
     font-family:'Julius Sans One', sans-serif;
-    font-size: 30px;
+    font-size: 15px;
     color: black;
+    
 }
 
 .styledButton button{
@@ -85,12 +86,14 @@
 }
 
 .vitalSigns{
+    width: 45%;
+    height: 45%;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: white;
-    background-color: #191a19;
+    background-color: #272222;
     border-radius: 1rem;
-    padding: 0.25rem 0.75rem;
 }
 
 .flex-container {
@@ -98,21 +101,28 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
 .flex-item-vitals{
-    width: 45%;
-    height: 45%;
-    background-color: #4A4646;
+
     border-radius: 2rem;
-    margin: 1%;
-    padding: 1%;
+    text-align: center;
 }
+
+.vitalSigns p{
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 25px;
+}
+
 .flex-item-info{
-    width: 25%;
-    height: 45%;
+    
     background-color: #4A4646;
     border-radius: 2rem;
-    margin: 1%;
-    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5%;
+    margin: 0.25%;
 }
 
 @keyframes scroll {
@@ -125,10 +135,9 @@
 }
 
 .HR_Background{
-    width: 60%;
-    height: 20%;
+
     background-color: #272222;
-    border-radius: 2rem;
+    border-radius: 1rem;
     overflow: hidden;
     white-space: nowrap;
     
