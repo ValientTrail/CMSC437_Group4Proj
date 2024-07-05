@@ -35,7 +35,7 @@ class CreatePatient extends React.Component {
       STREET: street, CITY: city, STATE: state, ZIP: zip, PHONENUM: phoneNum
     }
     
-    // Update database and clear input fields
+    // Update database
     this.setState(prevState => ({
       db: [...prevState.db, newPatient],
     }), () => {
