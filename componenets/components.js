@@ -335,7 +335,7 @@ class PowerButton extends React.Component {
                             Power Off
                         </h1>
                         <p style={{color:"white"}}>Do you want to turn the device off?</p>
-                        <p style={{color:"white"}}>Auto Hide after 10 seconds</p>
+                        <p style={{color:"white"}}>Automatically Abort after 10 seconds</p>
                         <div style={{
                             display: "flex",
                             alignItems: "center",
@@ -343,7 +343,9 @@ class PowerButton extends React.Component {
                             width: "100%",
                             height: "20%"
                         }}>
-                            <StyledButton name="Abort" style={{width:"80%", height:"100%"}} onClick={() => {this.setState(prevState => ({...prevState, isPowerOn: 0}))}}/>
+                            <StyledButton name="Abort" style={{width:"80%", height:"100%"}} onClick={() => {
+                                this.setState(prevState => ({...prevState, isPowerOn: 0
+                                }))}}/>
                             <StyledButton name="Confirm" style={{width:"90%", height:"100%", backgroundColor:"#14e414",
                             border: "2px solid #01fc44", "--hoverColor": "#01fc44"}} onClick={this.powerOff}/>
                         </div>

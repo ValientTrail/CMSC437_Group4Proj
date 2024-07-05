@@ -54,7 +54,7 @@ class PatientInfoScreen extends React.Component{
                         <h1 style={{
                             position: "absolute",
                             left: "5%",
-                            top: "10%",
+                            top: "8%",
                             fontFamily:"Julius Sans One, sans-serif, bold",
                                 fontSize: "50px",
                                 color:"white",
@@ -137,8 +137,6 @@ class PatientInfoScreen extends React.Component{
 
                         <PatientInfo form={this.state.form}/>
                     </div>
-                    
-                    
                 </div>
             </>
         )
