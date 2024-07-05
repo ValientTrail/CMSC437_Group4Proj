@@ -1,15 +1,18 @@
 function App(props) {
   const [pageList, setPageList] = React.useState([]);
-  const [userType, setUserType] = React.useState("First Responder");
+  const [userType, setUserType] = React.useState(" ");
   const [showBack, setShowBack] = React.useState(false);
 
-  const goToPrevPage = () => {
+  const goToPrevPage = async () => {
     if (pageList.length <= 1) return;
-    setPageList(prevArray => {
+    await setPageList(prevArray => {
       const pl = [...prevArray];
       pl.pop();
       return pl;
     });
+    if(pageList.length <= 2){
+      setUserType(" ")
+    }
   };
 
   const changePage = (page) => {
@@ -50,7 +53,6 @@ function App(props) {
         goBack={goToPrevPage} 
         page={currentPage} 
         userType={userType} 
-        pageType={currentPage?.type} // Pass pageType from the current page
       />
     </div>
   );

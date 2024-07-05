@@ -36,8 +36,7 @@ class AppBackground extends React.Component {
             page: props.page,
             goBack: props.goBack ?? null,
             showBack: props.showBack ?? false,
-            userType: props.userType ?? "First Responder", // Default to "First Responder" if undefined
-            pageType: props.pageType ?? "UserSelect" // Default to "UserSelect" if undefined
+            userType: props.userType ?? " ", // Default to "First Responder" if undefined
         };
         this.handleBack = this.handleBack.bind(this);
     }
@@ -49,23 +48,20 @@ class AppBackground extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.page === undefined || this.props.page?.type !== prevProps.page?.type ||
             prevProps.showBack !== this.props.showBack || this.props.goBack !== prevProps.goBack ||
-            this.props.userType !== prevProps.userType || this.props.pageType !== prevProps.pageType) { // Check for pageType changes
+            this.props.userType !== prevProps.userType) { // Check for pageType changes
             this.setState({
                 page: this.props.page,
                 goBack: this.props.goBack ?? null,
                 showBack: this.props.showBack ?? false,
-                userType: this.props.userType ?? "First Responder", // Update userType
-                pageType: this.props.pageType ?? "UserSelect" // Update pageType
+                userType: this.props.userType ?? " ", // Update userType
             });
         }
     }
 
     render() {
-        const { userType, pageType } = this.state;
-        const currentUserText = pageType === "UserSelect" ? "current user:" :
-                                userType === "First Responder" ? "current user: first responder" : 
-                                userType === "Hospital" ? "current user: hospital" : 
-                                "current user:";
+        const { userType } = this.state;
+        const currentUserText = userType === "First Responder" ? "current user: first responder" : 
+                                userType === "Hospital" ? "current user: hospital" : "current user:";
 
         return (
             <div className="appFrame">
