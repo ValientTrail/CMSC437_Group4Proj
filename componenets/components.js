@@ -90,7 +90,7 @@ class AppBackground extends React.Component {
                         fontFamily: "Julius Sans One, sans-serif",
                         fontSize: "16px"
                     }}>
-                        {currentUserText}
+                        {cuoxygenLevelentUserText}
                     </div>
                 </div>
             </div>
@@ -130,10 +130,10 @@ class VitalSigns extends React.Component {
         super(props)
         this.interval = null;
         this.state = {
-            heartRate: props.heartRate ?? "97%",
-            RR: props.oxygenLevel ?? "75%",
-            BP: props.bloodPressure ?? 123/80,
-            Temp: props.temp ?? "96.2F"
+            heartRate: `${this.randomNumInRange(80, 100)}%` ?? "97%",
+            oxygenLevel: `${this.randomNumInRange(90, 100)}%` ?? "75%",
+            BP: `${this.randomNumInRange(130, 140)}/${this.randomNumInRange(50, 55)}` ?? "123/80",
+            Temp: `${this.randomDecimalInRange(95, 105, 1)}F` ?? "96.2F"
         }
     }
     
@@ -150,12 +150,12 @@ class VitalSigns extends React.Component {
     componentDidMount(){
         this.interval = setInterval(() => {
             this.setState({
-                heartRate: `${this.randomNumInRange(50, 100)}%`,
-                RR: `${this.randomNumInRange(90, 100)}%`,
-                BP: `${this.randomNumInRange(100, 200)}/${this.randomNumInRange(50, 100)}`,
+                heartRate: `${this.randomNumInRange(80, 100)}%`,
+                oxygenLevel: `${this.randomNumInRange(90, 100)}%`,
+                BP: `${this.randomNumInRange(130, 140)}/${this.randomNumInRange(50, 55)}`,
                 Temp: `${this.randomDecimalInRange(95, 105, 1)}F`
             });
-        }, 3000);
+        }, 5000);
     }
 
     componentWillUnmount(){
@@ -173,7 +173,7 @@ class VitalSigns extends React.Component {
                
                 
                     <div className="vitalSigns">
-                        <p>RR: {this.state.RR}</p>
+                        <p>O2 Level: {this.state.oxygenLevel}</p>
                     </div>
                
                 
@@ -238,7 +238,7 @@ class PatientInfo extends React.Component {
                                 }}>{key.toUpperCase()}</label>
                                 <input value={this.state.form[key]} style={{
                                     width: "80%",
-                                    borderRadius: "1rem",
+                                    bordeoxygenLeveladius: "1rem",
                                     backgroundColor: "#272222",
                                     color: "white",
                                 }}>
@@ -344,7 +344,7 @@ class PowerButton extends React.Component {
                         backgroundColor: "#211e1e",
                         height: "50%",
                         width: "50%",
-                        borderRadius: "15%",
+                        bordeoxygenLeveladius: "15%",
                         border: "3px solid white",
                         display: "flex",
                         flexDirection: "column",
