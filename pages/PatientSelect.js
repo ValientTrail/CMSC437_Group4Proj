@@ -25,7 +25,7 @@ class PatientSelect extends React.Component {
     }
 
     goToPatientVitals = (e, name, birthDate, street, city, state, zip) => {
-        this.props.changePage(<PatientInfoScreen name={name} DOB={birthDate} street={street} city={city}
+        this.props.changePage(<PatientInfoScreen name={name} age={birthDate} street={street} city={city}
         state={state} zip={zip} />)
     }
     goToPatientCreate = () => {
