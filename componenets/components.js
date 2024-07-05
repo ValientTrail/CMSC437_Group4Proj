@@ -132,12 +132,38 @@ class StyledButton extends React.Component {
 class VitalSigns extends React.Component {
     constructor(props){
         super(props)
+        this.interval = null;
         this.state = {
-            spO2: props.heartRate ?? "97%",
-            RR: props.oxygenLevel ?? 75,
-            BP: props.temperature ?? 123/80,
+            heartRate: props.heartRate ?? "97%",
+            RR: props.oxygenLevel ?? "75%",
+            BP: props.bloodPressure ?? 123/80,
             Temp: props.temp ?? "96.2F"
         }
+    }
+    
+    randomNumInRange = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    randomDecimalInRange = (min, max, decPlace) => {
+        let num = Math.random() * (max - min + 1) + min;
+        let newNum = num.toFixed(decPlace);
+        return newNum;
+    }
+
+    componentDidMount(){
+        this.interval = setInterval(() => {
+            this.setState({
+                heartRate: `${this.randomNumInRange(50, 100)}%`,
+                RR: `${this.randomNumInRange(90, 100)}%`,
+                BP: `${this.randomNumInRange(100, 200)}/${this.randomNumInRange(50, 100)}`,
+                Temp: `${this.randomDecimalInRange(95, 105, 1)}F`
+            });
+        }, 3000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
 
     render() {
@@ -146,7 +172,7 @@ class VitalSigns extends React.Component {
             <div className="flex-container">
                 
                     <div className="vitalSigns">
-                        <p>SPO2: {this.state.spO2}</p>
+                        <p>heartRate: {this.state.heartRate}</p>
                     </div>
                
                 

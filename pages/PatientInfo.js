@@ -10,14 +10,8 @@ class PatientInfoScreen extends React.Component{
                 city: props.city ?? "Baltimore",
                 state: props.state ?? "MD",
                 zip: props.zip ?? 21749
-            },
-            goBack: props.goBack            
+            }
         }
-        this.handleBack = this.handleBack.bind(this)
-    }
-
-    handleBack = () => {
-        this.state.goBack();
     }
 
     render(){
@@ -120,7 +114,7 @@ class PatientInfoScreen extends React.Component{
                             }}>BP</h1>
                             </div>
                         </div>
-                        <VitalSigns/> 
+                        <VitalSigns /> 
                     </div>
                     <div style={{
                         height:"20%",
