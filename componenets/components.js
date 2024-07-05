@@ -30,57 +30,78 @@ class WifiBar extends React.Component {
 
 
 class AppBackground extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             page: props.page,
             goBack: props.goBack ?? null,
-            showBack: props.showBack ?? false
+            showBack: props.showBack ?? false,
+            userType: props.userType ?? "First Responder", // Default to "First Responder" if undefined
+            pageType: props.pageType ?? "UserSelect" // Default to "UserSelect" if undefined
         };
-        this.handleBack = this.handleBack.bind(this)
+        this.handleBack = this.handleBack.bind(this);
     }
 
-    handleBack(){
-        this.state.goBack()
+    handleBack() {
+        this.state.goBack();
     }
 
-    componentDidUpdate(prevProps){
-        
-        if(prevProps.page === undefined || this.props.page?.type !== prevProps.page?.type 
-            || prevProps.showBack !== this.props.showBack || this.props.goBack != prevProps.goBack
-        ){
-            this.setState ({
+    componentDidUpdate(prevProps) {
+        if (prevProps.page === undefined || this.props.page?.type !== prevProps.page?.type ||
+            prevProps.showBack !== this.props.showBack || this.props.goBack !== prevProps.goBack ||
+            this.props.userType !== prevProps.userType || this.props.pageType !== prevProps.pageType) { // Check for pageType changes
+            this.setState({
                 page: this.props.page,
                 goBack: this.props.goBack ?? null,
-                showBack: this.props.showBack ?? false
-            })
+                showBack: this.props.showBack ?? false,
+                userType: this.props.userType ?? "First Responder", // Update userType
+                pageType: this.props.pageType ?? "UserSelect" // Update pageType
+            });
         }
     }
 
-    render(){
-        return(
-        <div className="appFrame">
-            <div className="appBackground">
-                <WifiBar/>
-                {
-                    this.state.page
-                }
-                { this.state.showBack ?
-                <StyledButton 
-                    style = {{
+    render() {
+        const { userType, pageType } = this.state;
+        const currentUserText = pageType === "UserSelect" ? "current user:" :
+                                userType === "First Responder" ? "current user: first responder" : 
+                                userType === "Hospital" ? "current user: hospital" : 
+                                "current user:";
+
+        return (
+            <div className="appFrame">
+                <div className="appBackground">
+                    <WifiBar />
+                    {
+                        this.state.page
+                    }
+                    {this.state.showBack &&
+                        <StyledButton
+                            style={{
+                                position: "absolute",
+                                top: "2%",
+                                left: "2%",
+                                height: "6%",
+                            }}
+                            name="< Back"
+                            onClick={this.handleBack}
+                        />
+                    }
+                    <div style={{
                         position: "absolute",
-                        top: "2%",
-                        left: "2%",
-                        height: "6%",
-                    }}
-                    name="< Back"
-                    onClick={ this.handleBack }
-                />:<></>
-                }
+                        bottom: "4.5%",
+                        left: "4.5%",
+                        color: "white",
+                        fontFamily: "Julius Sans One, sans-serif",
+                        fontSize: "16px"
+                    }}>
+                        {currentUserText}
+                    </div>
+                </div>
             </div>
-        </div>
-    )}
+        );
+    }
 }
+
 
 class StyledButton extends React.Component {
     constructor(props){

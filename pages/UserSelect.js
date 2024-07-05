@@ -1,17 +1,18 @@
 class UserSelect extends React.Component {
     constructor(props){
-        super(props)
+        super(props);
         this.handlePatientClick = this.handlePatientClick.bind(this);
         this.handlePowerChange = this.handlePowerChange.bind(this);
         this.handleUserChange = this.handleUserChange.bind(this);
         this.state = {
             changePage: props.changePage,
             power: 0,
-            userType: "First Responder"
-        }
+            userType: props.userType, // Initialize userType from props
+        };
     }
+
     handlePatientClick(){
-        this.state.changePage(<PatientSelect changePage={this.props.changePage} userType={this.state.userType}/>)
+        this.state.changePage(<PatientSelect changePage={this.props.changePage} userType={this.state.userType}/>);
     }
 
     handlePowerChange(power) {
@@ -19,8 +20,8 @@ class UserSelect extends React.Component {
     }
 
     handleUserChange(userType){
+        this.props.changeUserType(userType); // Update the userType in App component
         this.setState({ userType: userType }, () => {
-            console.log("User Type: " + this.state.userType);
             this.handlePatientClick(); 
         });
     }
@@ -30,7 +31,7 @@ class UserSelect extends React.Component {
 
         return (
             <div style={{
-                position: "relative", // Set position relative for absolute positioning inside
+                position: "relative",
                 width: "100%",
                 height: "100%",
                 display: "flex",
@@ -38,8 +39,6 @@ class UserSelect extends React.Component {
                 justifyContent: "center",
                 flexDirection: "column"
             }}>
-
-
                 {/* Render other components only if power is on */}
                 {isPowerOn && (
                     <div style={{position: "relative", zIndex: 1}}>
@@ -66,7 +65,7 @@ class UserSelect extends React.Component {
                             hoverColor="#0066ff"
                         />
                     </div>
-                )}                
+                )}
                 {/* Always render the power button */}
                 <PowerButton power={this.state.power} handlePowerChange={this.handlePowerChange} />
             </div>

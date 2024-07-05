@@ -35,7 +35,7 @@ class PatientInfoScreen extends React.Component{
                 }}>
                 <h1 style={{
                             position: "absolute",
-                            top: "-2%",
+                            top: "-5%",
                             fontFamily:"Julius Sans One, sans-serif, bold",
                                 fontSize: "50px",
                                 color:"white",
@@ -53,7 +53,7 @@ class PatientInfoScreen extends React.Component{
                     }}>
                         <h1 style={{
                             position: "absolute",
-                            left: "45%",
+                            left: "5%",
                             top: "10%",
                             fontFamily:"Julius Sans One, sans-serif, bold",
                                 fontSize: "50px",

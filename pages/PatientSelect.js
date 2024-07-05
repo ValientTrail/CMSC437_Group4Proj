@@ -45,6 +45,7 @@ class PatientSelect extends React.Component {
                     justigyContent: "center",
                     backgroundColor: "#62ff62",
                     borderRadius: "20px",
+                    margin: "5px",
                     whiteSpace: "wrap"
                 }}>
                     <div style={{backgroundColor:"grey", borderRadius:"50%", width: "50%", height: "50%"}}></div>
@@ -54,15 +55,14 @@ class PatientSelect extends React.Component {
                 {isFR && (
                 <button onClick={this.goToPatientCreate} style={{
                     width: "18%",
-                    height: "10%",
+                    height: "25%",
                     position: "relative",
                     borderRadius: "20px",
                     display: "flex",
                     alignItems: "center",
                     justigyContent: "center",
                     textAlign: "center",
-                    margin: "10px",
-                    top:"5%",
+                    margin: "5px",
                     border: "5px solid white",
                     backgroundColor: "black"
 
