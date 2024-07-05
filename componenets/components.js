@@ -62,10 +62,10 @@ class AppBackground extends React.Component {
 
     render() {
         const { userType, pageType } = this.state;
-        const cuoxygenLevelentUserText = pageType === "UserSelect" ? "cuoxygenLevelent user:" :
-                                userType === "First Responder" ? "cuoxygenLevelent user: first responder" : 
-                                userType === "Hospital" ? "cuoxygenLevelent user: hospital" : 
-                                "cuoxygenLevelent user:";
+        const currentUserText = pageType === "UserSelect" ? "current user:" :
+                                userType === "First Responder" ? "current user: first responder" : 
+                                userType === "Hospital" ? "current user: hospital" : 
+                                "current user:";
 
         return (
             <div className="appFrame">
@@ -94,7 +94,7 @@ class AppBackground extends React.Component {
                         fontFamily: "Julius Sans One, sans-serif",
                         fontSize: "16px"
                     }}>
-                        {cuoxygenLevelentUserText}
+                        {currentUserText}
                     </div>
                 </div>
             </div>
@@ -242,7 +242,7 @@ class PatientInfo extends React.Component {
                                 }}>{key.toUpperCase()}</label>
                                 <input value={this.state.form[key]} style={{
                                     width: "80%",
-                                    bordeoxygenLeveladius: "1rem",
+                                    borderRadius: "1rem",
                                     backgroundColor: "#272222",
                                     color: "white",
                                 }}>
@@ -348,7 +348,7 @@ class PowerButton extends React.Component {
                         backgroundColor: "#211e1e",
                         height: "50%",
                         width: "50%",
-                        bordeoxygenLeveladius: "15%",
+                        borderRadius: "15%",
                         border: "3px solid white",
                         display: "flex",
                         flexDirection: "column",
