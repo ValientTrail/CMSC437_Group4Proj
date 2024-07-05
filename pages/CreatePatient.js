@@ -30,6 +30,7 @@ class CreatePatient extends React.Component {
     return (
       <div
         style={{
+          fontFamily: "Julius Sans One, sans-serif",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -54,11 +55,11 @@ class CreatePatient extends React.Component {
                   <nav>
                     <div className="input">
                       <label>First Name: </label>
-                      <input type="text" id="fname" name="fname" />
+                      <input type="text" id="fname" name="fname" required/>
                     </div>
                     <div className="input">
                       <label>Last Name: </label>
-                      <input type="text" id="lname" name="lname" />
+                      <input type="text" id="lname" name="lname"/>
                     </div>
                   </nav>
 
@@ -96,7 +97,7 @@ class CreatePatient extends React.Component {
                 <div className="container">
                   <label>Incident Report: </label>
                   <br />
-                  <textarea id="data-entry" rows="3" cols="55"></textarea>
+                  <textarea id="data-entry" rows="3" cols="55" required></textarea>
                 </div>
 
                 {/* Patient's Contact Information */}
@@ -128,9 +129,11 @@ class CreatePatient extends React.Component {
                   <input type="tel" />
                 </div>
                 {/* Submit Button */}
-                <nav id="submit-button">
-                  <button type="submit" onSubmit={this.createNewPatient}>CREATE</button>
-                </nav>
+                <div id="submit-button">
+                  <button type="submit" onSubmit={this.createNewPatient}style={{
+                    backgroundColor: "#62ff62",
+                }}>CREATE</button>
+                </div>
               </div>
             </form>
             
