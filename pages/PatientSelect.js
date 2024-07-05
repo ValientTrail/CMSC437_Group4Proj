@@ -2,7 +2,8 @@ class PatientSelect extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            database: {}
+            database: {},
+            userType: props.userType,
         }
     }
 
@@ -22,7 +23,7 @@ class PatientSelect extends React.Component {
     }
 
     render(){
-        
+        const isFR = this.state.userType === "First Responder";
         return( 
             <div style={{
                 position:"relative",
@@ -50,6 +51,7 @@ class PatientSelect extends React.Component {
                     <h1 style={{color:"white", fontFamily: "Julius Sans One, sans-serif"}}>Jane Doe</h1>
 
                 </button>
+                {isFR && (
                 <button onClick={this.goToPatientCreate} style={{
                     width: "18%",
                     height: "10%",
@@ -66,8 +68,10 @@ class PatientSelect extends React.Component {
 
 
                 }}>
+                    
                     <h1 style={{color:"white", fontFamily: "Julius Sans One, sans-serif"}}>New Patient</h1>
                 </button>
+            )}
             </div>
         
         )

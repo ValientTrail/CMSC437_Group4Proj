@@ -7,11 +7,11 @@ class UserSelect extends React.Component {
         this.state = {
             changePage: props.changePage,
             power: 0,
-            userType: "First-Responder"
+            userType: "First Responder"
         }
     }
     handlePatientClick(){
-        this.state.changePage(<PatientSelect changePage={this.props.changePage}/>)
+        this.state.changePage(<PatientSelect changePage={this.props.changePage} userType={this.state.userType}/>)
     }
 
     handlePowerChange(power) {
@@ -19,7 +19,10 @@ class UserSelect extends React.Component {
     }
 
     handleUserChange(userType){
-        this.setState({userType: userType});
+        this.setState({ userType: userType }, () => {
+            console.log("User Type: " + this.state.userType);
+            this.handlePatientClick(); 
+        });
     }
 
     render() {
@@ -42,14 +45,18 @@ class UserSelect extends React.Component {
                     <div style={{position: "relative", zIndex: 1}}>
                         <h1 style={{color: "#FF5000"}}>Select User Type</h1>
                         <StyledButton 
-                            onClick={this.handlePatientClick}
+                            onClick={() => { 
+                                this.handleUserChange("First Responder"); 
+                            }}
                             name="First Responder"
                             style={{
                                 width: "400px"
                             }}
                         />
                         <StyledButton 
-                            onClick={this.handleUserChange}
+                            onClick={() => { 
+                                this.handleUserChange("Hospital"); 
+                            }}
                             name="Hospital"
                             style={{
                                 width: "400px",
