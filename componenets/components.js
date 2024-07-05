@@ -159,7 +159,7 @@ class VitalSigns extends React.Component {
                 BP: `${this.randomNumInRange(130, 140)}/${this.randomNumInRange(50, 55)}`,
                 Temp: `${this.randomDecimalInRange(95, 105, 1)}F`
             });
-        }, 10000);
+        }, 5000);
     }
 
     componentWillUnmount(){
