@@ -248,6 +248,7 @@ class PatientInfo extends React.Component {
                         )
                     })
                 }
+
             </div>
             </>
         )

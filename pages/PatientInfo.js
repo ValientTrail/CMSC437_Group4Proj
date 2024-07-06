@@ -132,7 +132,63 @@ class PatientInfoScreen extends React.Component{
                         <PatientInfo form={this.state.form}/>
                     </div>
                 </div>
+                <SendDataToHospitalComp />
             </>
         )
     }
 } 
+
+function SendDataToHospitalComp(){
+    const [showAlert, setShowAlert] = React.useState(false);
+    return(
+        <div style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+        }}>
+           { showAlert ? <div style={{
+                        backgroundColor: "#211e1e",
+                        height: "50%",
+                        width: "50%",
+                        borderRadius: "20px",
+                        border: "3px solid white",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        zIndex: "3"
+                    }}>
+                        <h1 style={{position: "relative", color:"white", 
+                        fontFamily: "Julius Sans One, sans-serif"}}>
+                            Data sent to hospital!
+                        </h1>
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "100%",
+                            height: "20%"
+                        }}>
+                            <StyledButton name="Confirm" style={{width:"90%", height:"100%", backgroundColor:"#14e414",
+                            border: "2px solid #01fc44", "--hoverColor": "#01fc44"}} onClick={() => {setShowAlert(false)}}/>
+                        </div>
+                    </div>:<></>
+                    }
+                    <StyledButton
+                            style={{
+                                position: "absolute",
+                                bottom: "2%",
+                                right: "2%",
+                                height: "6%",
+                            }}
+                            name="Send Data"
+                            onClick={() => {setShowAlert(true)}}
+                        />
+
+        </div>
+
+    )
+}
